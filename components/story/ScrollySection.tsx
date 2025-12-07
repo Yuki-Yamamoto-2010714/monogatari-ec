@@ -45,7 +45,7 @@ export function ScrollySection({ value }: ScrollySectionProps) {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/50" />
           </motion.div>
         </div>
 
@@ -54,8 +54,8 @@ export function ScrollySection({ value }: ScrollySectionProps) {
           style={{ opacity }}
           className="absolute top-0 left-0 right-0 h-full flex items-center justify-center"
         >
-          <div className="max-w-3xl mx-auto px-8 py-16 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl">
-            <div className="prose prose-lg prose-amber max-w-none">
+          <div className="max-w-3xl mx-auto px-8 py-16 bg-white/95 backdrop-blur-md rounded-sm shadow-2xl border border-stone-100">
+            <div className="prose prose-lg prose-stone max-w-none font-serif">
               <PortableText value={content} />
             </div>
           </div>
@@ -78,7 +78,7 @@ export function ScrollySection({ value }: ScrollySectionProps) {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/60" />
           </div>
 
           <motion.div
@@ -86,7 +86,7 @@ export function ScrollySection({ value }: ScrollySectionProps) {
             className="absolute inset-0 flex items-center justify-center"
           >
             <div className="max-w-4xl mx-auto px-8">
-              <div className="prose prose-xl prose-invert max-w-none text-white">
+              <div className="prose prose-xl prose-invert max-w-none text-white font-serif tracking-wide leading-relaxed drop-shadow-md">
                 <PortableText value={content} />
               </div>
             </div>
@@ -111,15 +111,15 @@ export function ScrollySection({ value }: ScrollySectionProps) {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
           </div>
 
           <motion.div
             style={{ x, opacity }}
             className="absolute inset-0 flex items-center"
           >
-            <div className="max-w-2xl ml-16 px-8 py-12 bg-white rounded-2xl shadow-2xl">
-              <div className="prose prose-lg prose-amber max-w-none">
+            <div className="max-w-2xl ml-16 px-8 py-12 bg-white rounded-sm shadow-2xl border-l-4 border-stone-800">
+              <div className="prose prose-lg prose-stone max-w-none font-serif">
                 <PortableText value={content} />
               </div>
             </div>

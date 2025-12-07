@@ -23,16 +23,16 @@ export default async function StoryPage({
 
   const publishedDate = story.publishedAt
     ? new Date(story.publishedAt).toLocaleDateString('ja-JP', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
     : null
 
   return (
-    <article className="min-h-screen">
+    <article className="min-h-screen bg-stone-50">
       {/* ヒーローセクション */}
-      <header className="relative h-[70vh] mb-16">
+      <header className="relative h-[80vh] mb-16">
         {mainImageUrl && (
           <>
             <Image
@@ -42,22 +42,22 @@ export default async function StoryPage({
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-black/50" />
           </>
         )}
 
-        <div className="absolute inset-0 flex items-end">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
-            <div className="max-w-3xl">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+            <div className="inline-block relative p-8 md:p-12 border-y border-white/30 backdrop-blur-sm bg-black/10">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif tracking-widest leading-relaxed drop-shadow-xl">
                 {story.title}
               </h1>
               {story.excerpt && (
-                <p className="text-xl md:text-2xl text-white/90 mb-6 drop-shadow">
+                <p className="text-lg md:text-2xl text-stone-200 mb-8 font-medium tracking-wider">
                   {story.excerpt}
                 </p>
               )}
-              <div className="flex items-center gap-6 text-white/80 text-sm">
+              <div className="flex items-center justify-center gap-6 text-stone-300 text-sm tracking-widest uppercase">
                 {publishedDate && (
                   <time dateTime={story.publishedAt}>{publishedDate}</time>
                 )}
@@ -66,7 +66,7 @@ export default async function StoryPage({
                     <span>•</span>
                     <Link
                       href={`/artisans/${story.artisan.slug.current}`}
-                      className="hover:text-white transition-colors"
+                      className="hover:text-white transition-colors border-b border-transparent hover:border-white"
                     >
                       職人：{story.artisan.name}
                     </Link>
@@ -79,17 +79,18 @@ export default async function StoryPage({
       </header>
 
       {/* 本文コンテンツ */}
-      <div className="max-w-5xl mx-auto">
-        {/* 職人情報カード */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
+
+        {/* 職人情報カード (Simple & Elegant) */}
         {story.artisan && (
-          <aside className="mx-4 sm:mx-6 lg:mx-8 mb-16">
+          <aside className="mb-16 bg-white p-8 rounded-sm shadow-xl border-t-4 border-stone-800">
             <Link
               href={`/artisans/${story.artisan.slug.current}`}
-              className="block bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300"
+              className="group block"
             >
-              <div className="flex items-center gap-6">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                 {story.artisan.portrait && (
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-amber-200">
+                  <div className="relative w-32 h-32 rounded-full overflow-hidden flex-shrink-0 border-2 border-stone-100 group-hover:border-stone-400 transition-colors">
                     <Image
                       src={urlFor(story.artisan.portrait).url()}
                       alt={story.artisan.name}
@@ -98,33 +99,21 @@ export default async function StoryPage({
                     />
                   </div>
                 )}
-                <div className="flex-1">
-                  <p className="text-sm text-amber-700 font-semibold mb-1">
-                    この物語の職人
+                <div className="flex-1 text-center md:text-left">
+                  <p className="text-xs text-stone-500 font-bold uppercase tracking-widest mb-2">
+                    Crafted by
                   </p>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3 font-serif group-hover:text-stone-600 transition-colors">
                     {story.artisan.name}
                   </h2>
                   {story.artisan.philosophy && (
-                    <p className="text-gray-700 line-clamp-2">
-                      {story.artisan.philosophy}
+                    <p className="text-stone-600 leading-relaxed italic mb-4">
+                      "{story.artisan.philosophy}"
                     </p>
                   )}
-                  <p className="text-amber-700 font-semibold mt-3 flex items-center gap-2">
+                  <p className="text-stone-900 font-bold text-sm inline-flex items-center gap-2 border-b border-stone-900 pb-0.5 group-hover:opacity-70">
                     詳しいプロフィールを見る
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                   </p>
                 </div>
               </div>
@@ -133,34 +122,34 @@ export default async function StoryPage({
         )}
 
         {/* Portable Textコンテンツ */}
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg prose-amber max-w-none">
+        <div className="bg-white p-8 md:p-12 rounded-sm shadow-sm mb-16">
+          <div className="prose prose-lg prose-stone max-w-none font-serif leading-loose">
             {story.body && <PortableTextRenderer value={story.body} />}
           </div>
         </div>
       </div>
 
       {/* ストーリー末尾のCTA */}
-      <footer className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mt-16">
-        <div className="bg-gray-900 rounded-2xl p-8 md:p-12 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">
+      <footer className="bg-stone-900 text-white py-24 px-4 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
             この物語に共感いただけましたか？
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            南砺市の職人たちが心を込めて作る作品をぜひご覧ください。
+          <p className="text-lg text-stone-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            南砺市の職人たちが心を込めて作る作品を、ぜひあなたの手元へ。
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               href="/products"
-              className="px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg transition-colors duration-200"
+              className="px-10 py-5 bg-white text-stone-900 font-bold rounded-sm hover:bg-stone-200 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
             >
-              商品一覧を見る
+              作品を探す
             </Link>
             <Link
               href="/artisans"
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-lg transition-colors duration-200"
+              className="px-10 py-5 border border-white/30 text-white font-bold rounded-sm hover:bg-white/10 transition-all duration-300"
             >
-              職人一覧を見る
+              職人を知る
             </Link>
           </div>
         </div>

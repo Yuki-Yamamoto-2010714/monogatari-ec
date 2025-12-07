@@ -10,6 +10,7 @@ interface CartStore {
   clearCart: () => void
   getTotal: () => number
   getItemCount: () => number
+  checkout: () => Promise<boolean>
 }
 
 export const useCartStore = create<CartStore>()(
@@ -49,8 +50,8 @@ export const useCartStore = create<CartStore>()(
             quantity <= 0
               ? state.items.filter((item) => item.productId !== productId)
               : state.items.map((item) =>
-                  item.productId === productId ? { ...item, quantity } : item
-                ),
+                item.productId === productId ? { ...item, quantity } : item
+              ),
         })),
 
       clearCart: () => set({ items: [] }),
@@ -63,6 +64,15 @@ export const useCartStore = create<CartStore>()(
       getItemCount: () => {
         const { items } = get()
         return items.reduce((count, item) => count + item.quantity, 0)
+      },
+
+      checkout: async () => {
+        // Mock Checkout specific logic
+        // In a real app, this would call Shopify API to create a checkout URL
+        // For now, we simulate a delay and then clear the cart
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        set({ items: [] })
+        return true
       },
     }),
     {
