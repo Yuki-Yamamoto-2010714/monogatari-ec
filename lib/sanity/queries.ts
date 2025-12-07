@@ -2,7 +2,7 @@ import { client } from './client'
 
 // 全商品を取得
 export async function getAllProducts() {
-  const query = `*[_type == "product"] | order(_createdAt desc) {
+  const query = `*[_type == "product" && !(_id in path("drafts.**"))] | order(_createdAt desc) {
     _id,
     title,
     slug,
@@ -24,7 +24,7 @@ export async function getAllProducts() {
 
 // 特集商品を取得
 export async function getFeaturedProducts() {
-  const query = `*[_type == "product" && featured == true] | order(_createdAt desc) [0...6] {
+  const query = `*[_type == "product" && !(_id in path("drafts.**")) && featured == true] | order(_createdAt desc) [0...6] {
     _id,
     title,
     slug,
@@ -43,7 +43,7 @@ export async function getFeaturedProducts() {
 
 // 商品詳細を取得
 export async function getProductBySlug(slug: string) {
-  const query = `*[_type == "product" && slug.current == $slug][0] {
+  const query = `*[_type == "product" && !(_id in path("drafts.**")) && slug.current == $slug][0] {
     _id,
     title,
     slug,
@@ -75,7 +75,7 @@ export async function getProductBySlug(slug: string) {
 
 // 全職人を取得
 export async function getAllArtisans() {
-  const query = `*[_type == "artisan"] | order(name asc) {
+  const query = `*[_type == "artisan" && !(_id in path("drafts.**"))] | order(name asc) {
     _id,
     name,
     slug,
@@ -88,7 +88,7 @@ export async function getAllArtisans() {
 
 // 職人詳細を取得
 export async function getArtisanBySlug(slug: string) {
-  const query = `*[_type == "artisan" && slug.current == $slug][0] {
+  const query = `*[_type == "artisan" && !(_id in path("drafts.**")) && slug.current == $slug][0] {
     _id,
     name,
     slug,
@@ -120,7 +120,7 @@ export async function getArtisanBySlug(slug: string) {
 
 // 全ストーリーを取得
 export async function getAllStories() {
-  const query = `*[_type == "story"] | order(publishedAt desc) {
+  const query = `*[_type == "story" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -140,7 +140,7 @@ export async function getAllStories() {
 
 // 特集ストーリーを取得
 export async function getFeaturedStories() {
-  const query = `*[_type == "story" && featured == true] | order(publishedAt desc) [0...3] {
+  const query = `*[_type == "story" && !(_id in path("drafts.**")) && featured == true] | order(publishedAt desc) [0...3] {
     _id,
     title,
     slug,
@@ -159,7 +159,7 @@ export async function getFeaturedStories() {
 
 // ストーリー詳細を取得
 export async function getStoryBySlug(slug: string) {
-  const query = `*[_type == "story" && slug.current == $slug][0] {
+  const query = `*[_type == "story" && !(_id in path("drafts.**")) && slug.current == $slug][0] {
     _id,
     title,
     slug,
