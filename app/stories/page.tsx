@@ -3,6 +3,16 @@ import { urlFor } from '@/lib/sanity/client'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Helper to get placeholder based on story content
+const getPlaceholderImage = (story: any) => {
+  const title = story.title || ''
+  const craft = story.artisan?.craftType || ''
+
+  if (title.includes('井波') || craft === 'inami-woodcarving') return '/images/placeholder_ranma.png'
+  if (title.includes('和紙') || craft === 'gokayama-washi') return '/images/placeholder_washi.png'
+  return '/images/hero.png'
+}
+
 export default async function StoriesPage() {
   const stories = await getAllStories()
 
@@ -43,7 +53,12 @@ export default async function StoriesPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   ) : (
-                    <div className="flex items-center justify-center h-full text-stone-400 font-serif">NO IMAGE</div>
+                    <Image
+                      src={getPlaceholderImage(story)}
+                      alt={story.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                    />
                   )}
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                 </div>

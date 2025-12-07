@@ -3,6 +3,16 @@ import { urlFor } from '@/lib/sanity/client'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Helper to get placeholder based on craft type
+const getPlaceholderImage = (artisan: any) => {
+  const craft = artisan.craftType || ''
+  const name = artisan.name || ''
+
+  if (craft === 'inami-woodcarving' || name.includes('井波')) return '/images/placeholder_ranma.png'
+  if (craft === 'gokayama-washi' || name.includes('和紙')) return '/images/placeholder_washi.png'
+  return '/images/placeholder_plate.png'
+}
+
 export default async function ArtisansPage() {
   const artisans = await getAllArtisans()
 
@@ -40,7 +50,12 @@ export default async function ArtisansPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   ) : (
-                    <div className="flex items-center justify-center h-full text-stone-400">NO PORTRAIT</div>
+                    <Image
+                      src={getPlaceholderImage(artisan)}
+                      alt={artisan.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 grayscale"
+                    />
                   )}
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent opacity-80" />
 
