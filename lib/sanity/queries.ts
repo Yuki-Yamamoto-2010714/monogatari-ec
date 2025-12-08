@@ -1,8 +1,29 @@
 import { client } from './client'
 
-// 全商品を取得
-export async function getAllProducts() {
-  const query = `*[_type == "product" && !(_id in path("drafts.**"))] | order(_createdAt desc) {
+// 全商品を取得 (フィルタリング対応)
+export async function getFilteredProducts(params: { category?: string, minPrice?: number, maxPrice?: number, search?: string } = {}) {
+  const { category, minPrice, maxPrice, search } = params
+
+  const filters = ['_type == "product"', '!(_id in path("drafts.**"))']
+
+  if (category && category !== 'all') {
+    filters.push(`category == "${category}"`)
+  }
+
+  if (minPrice) {
+    filters.push(`price >= ${minPrice}`)
+  }
+
+  if (maxPrice) {
+    filters.push(`price <= ${maxPrice}`)
+  }
+
+  if (search) {
+    filters.push(`(title match "*${search}*" || description match "*${search}*")`)
+  }
+
+  const filterString = filters.join(' && ')
+  const query = `*[${filterString}] | order(_createdAt desc) {
     _id,
     title,
     slug,
@@ -19,7 +40,13 @@ export async function getAllProducts() {
       craftType
     }
   }`
+
   return client.fetch(query, {}, { cache: 'no-store' })
+}
+
+// レガシー互換（必要なら残す）
+export async function getAllProducts() {
+  return getFilteredProducts({})
 }
 
 // 特集商品を取得
