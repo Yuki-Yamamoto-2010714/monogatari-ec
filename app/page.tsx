@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/atoms/Button'
 import { Hero } from '@/components/organisms/Hero'
+import { ImpactVisualization } from '@/components/organisms/ImpactVisualization'
 
 export default async function Home() {
   return (
@@ -24,6 +25,9 @@ export default async function Home() {
           </p>
         </div>
       </section>
+
+      {/* Impact Visualization */}
+      <ImpactVisualization />
 
       {/* Navigation Cards */}
       <section className="py-24 px-6 md:px-12">
