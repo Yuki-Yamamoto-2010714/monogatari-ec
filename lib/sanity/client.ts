@@ -8,6 +8,10 @@ export const client = createClient({
   apiVersion: '2025-11-25',
   useCdn: false, // 開発環境では常に最新データを取得
   perspective: 'published', // 公開済みドキュメントのみ取得
+  stega: {
+    enabled: false,
+    studioUrl: '/studio',
+  },
 })
 
 const builder = imageUrlBuilder(client)

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { getStoryBySlug } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/client'
 import { PortableTextRenderer } from '@/components/story/PortableTextRenderer'
+import CommentSection from '@/components/organisms/CommentSection'
 
 export default async function StoryPage({
   params,
@@ -17,9 +18,19 @@ export default async function StoryPage({
     notFound()
   }
 
+  // Helper to get placeholder based on story content
+  const getPlaceholderImage = (s: any) => {
+    const title = s.title || ''
+    const craft = s.artisan?.craftType || ''
+
+    if (title.includes('井波') || craft === 'inami-woodcarving') return '/images/placeholder_ranma.png'
+    if (title.includes('和紙') || craft === 'gokayama-washi') return '/images/placeholder_washi.png'
+    return '/images/hero.png'
+  }
+
   const mainImageUrl = story.mainImage
     ? urlFor(story.mainImage).url()
-    : null
+    : getPlaceholderImage(story)
 
   const publishedDate = story.publishedAt
     ? new Date(story.publishedAt).toLocaleDateString('ja-JP', {
@@ -33,18 +44,16 @@ export default async function StoryPage({
     <article className="min-h-screen bg-stone-50">
       {/* ヒーローセクション */}
       <header className="relative h-[80vh] mb-16">
-        {mainImageUrl && (
-          <>
-            <Image
-              src={mainImageUrl}
-              alt={story.title}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </>
-        )}
+        <>
+          <Image
+            src={mainImageUrl}
+            alt={story.title}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </>
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
@@ -128,6 +137,8 @@ export default async function StoryPage({
           </div>
         </div>
       </div>
+
+      <CommentSection targetId={story._id} targetType="story" comments={story.comments || []} />
 
       {/* ストーリー末尾のCTA */}
       <footer className="bg-stone-900 text-white py-24 px-4 text-center">

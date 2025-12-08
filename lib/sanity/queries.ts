@@ -19,7 +19,7 @@ export async function getAllProducts() {
       craftType
     }
   }`
-  return client.fetch(query)
+  return client.fetch(query, {}, { cache: 'no-store' })
 }
 
 // 特集商品を取得
@@ -38,7 +38,7 @@ export async function getFeaturedProducts() {
       craftType
     }
   }`
-  return client.fetch(query)
+  return client.fetch(query, {}, { cache: 'no-store' })
 }
 
 // 商品詳細を取得
@@ -68,9 +68,16 @@ export async function getProductBySlug(slug: string) {
       slug,
       excerpt,
       mainImage
+    },
+    "comments": *[_type == "comment" && product._ref == ^._id && approved == true] | order(createdAt desc) {
+      _id,
+      name,
+      content,
+      createdAt,
+      approved
     }
   }`
-  return client.fetch(query, { slug })
+  return client.fetch(query, { slug }, { cache: 'no-store' })
 }
 
 // 全職人を取得
@@ -83,7 +90,7 @@ export async function getAllArtisans() {
     craftType,
     philosophy
   }`
-  return client.fetch(query)
+  return client.fetch(query, {}, { cache: 'no-store' })
 }
 
 // 職人詳細を取得
@@ -115,7 +122,7 @@ export async function getArtisanBySlug(slug: string) {
       publishedAt
     }
   }`
-  return client.fetch(query, { slug })
+  return client.fetch(query, { slug }, { cache: 'no-store' })
 }
 
 // 全ストーリーを取得
@@ -135,7 +142,7 @@ export async function getAllStories() {
       craftType
     }
   }`
-  return client.fetch(query)
+  return client.fetch(query, {}, { cache: 'no-store' })
 }
 
 // 特集ストーリーを取得
@@ -154,7 +161,7 @@ export async function getFeaturedStories() {
       craftType
     }
   }`
-  return client.fetch(query)
+  return client.fetch(query, {}, { cache: 'no-store' })
 }
 
 // ストーリー詳細を取得
@@ -199,7 +206,14 @@ export async function getStoryBySlug(slug: string) {
       portrait,
       craftType,
       philosophy
+    },
+    "comments": *[_type == "comment" && story._ref == ^._id && approved == true] | order(createdAt desc) {
+      _id,
+      name,
+      content,
+      createdAt,
+      approved
     }
   }`
-  return client.fetch(query, { slug })
+  return client.fetch(query, { slug }, { cache: 'no-store' })
 }

@@ -18,7 +18,7 @@ export default async function StoriesPage() {
 
   return (
     <div className="bg-stone-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-20">
         <div className="mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-serif text-stone-900 mb-6 tracking-wide">
             職人の物語

@@ -1,46 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/atoms/Button'
+import { Hero } from '@/components/organisms/Hero'
 
 export default async function Home() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero.png"
-            alt="Traditional Woodcarving"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Darker overlay for better text visibility */}
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-
-        {/* Content - Vertical Writing */}
-        <div className="relative z-10 h-full flex flex-row-reverse items-center justify-center gap-16 md:gap-32 p-8 md:p-12">
-          <div className="writing-vertical-rl text-white">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-widest leading-loose drop-shadow-lg">
-              職人の想いを、<br />
-              あなたのもとへ
-            </h1>
-          </div>
-          <div className="writing-vertical-rl text-gray-50">
-            <p className="text-lg md:text-xl tracking-widest leading-loose">
-              南砺の伝統と、<br />
-              まだ見ぬ物語に出会う旅。
-            </p>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/70">
-          <span className="text-sm tracking-widest uppercase">Scroll</span>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <Hero />
 
       {/* Concept Section */}
       <section className="py-32 px-6 bg-stone-50">

@@ -7,13 +7,13 @@ export default function QRPage() {
     const [url, setUrl] = useState('')
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setUrl(window.location.origin)
-        }
+        // Use production URL to avoid Vercel Authentication on preview deployments
+        const prodUrl = 'https://monogatari-ec.vercel.app'
+        setUrl(prodUrl)
     }, [])
 
     return (
-        <div className="min-h-screen bg-stone-50 p-8 flex flex-col items-center justify-center">
+        <div className="min-h-screen bg-stone-50 pt-28 md:pt-32 pb-8 px-8 flex flex-col items-center justify-center">
             <div className="bg-white p-8 rounded-sm shadow-lg border border-stone-200 text-center max-w-sm w-full">
                 <h1 className="text-xl font-bold font-serif text-stone-900 mb-6">
                     スマホで確認

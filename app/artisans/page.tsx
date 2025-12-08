@@ -5,12 +5,12 @@ import Link from 'next/link'
 
 // Helper to get placeholder based on craft type
 const getPlaceholderImage = (artisan: any) => {
-  const craft = artisan.craftType || ''
-  const name = artisan.name || ''
-
-  if (craft === 'inami-woodcarving' || name.includes('井波')) return '/images/placeholder_ranma.png'
-  if (craft === 'gokayama-washi' || name.includes('和紙')) return '/images/placeholder_washi.png'
-  return '/images/placeholder_plate.png'
+  // Return specific image for Hanako Sato or based on heuristics if needed
+  if (artisan.name?.includes('花子') || artisan.name?.includes('Hanako')) {
+    return '/images/placeholder_female_artisan.png'
+  }
+  // Default male/general artisan
+  return '/images/placeholder_artisan.png'
 }
 
 export default async function ArtisansPage() {
@@ -18,7 +18,7 @@ export default async function ArtisansPage() {
 
   return (
     <div className="bg-stone-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-20">
         <div className="mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-serif text-stone-900 mb-6 tracking-wide">
             匠たち

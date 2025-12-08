@@ -54,6 +54,11 @@ export const Footer: React.FC = () => {
                   配送・返品
                 </Link>
               </li>
+              <li>
+                <Link href="/qr" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  スマホで見る
+                </Link>
+              </li>
             </ul>
           </div>
 

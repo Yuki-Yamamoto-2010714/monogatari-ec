@@ -1,6 +1,8 @@
+'use client'
+
 export default function ContactPage() {
     return (
-        <div className="bg-stone-50 min-h-screen py-20">
+        <div className="bg-stone-50 min-h-screen pt-28 md:pt-32 pb-20">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 className="text-4xl font-bold font-serif text-stone-900 mb-12 text-center">
                     お問い合わせ
