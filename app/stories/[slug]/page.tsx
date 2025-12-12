@@ -62,11 +62,11 @@ export default async function StoryPage({
                 {story.title}
               </h1>
               {story.excerpt && (
-                <p className="text-lg md:text-2xl text-stone-200 mb-8 font-medium tracking-wider">
+                <p className="text-lg md:text-2xl text-stone-100 mb-8 font-medium tracking-wider">
                   {story.excerpt}
                 </p>
               )}
-              <div className="flex items-center justify-center gap-6 text-stone-300 text-sm tracking-widest uppercase">
+              <div className="flex items-center justify-center gap-6 text-stone-200 text-sm tracking-widest uppercase">
                 {publishedDate && (
                   <time dateTime={story.publishedAt}>{publishedDate}</time>
                 )}
@@ -146,7 +146,7 @@ export default async function StoryPage({
           <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
             この物語に共感いただけましたか？
           </h2>
-          <p className="text-lg text-stone-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-stone-300 mb-12 max-w-2xl mx-auto leading-relaxed">
             南砺市の職人たちが心を込めて作る作品を、ぜひあなたの手元へ。
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

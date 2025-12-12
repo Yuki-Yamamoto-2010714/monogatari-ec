@@ -108,7 +108,6 @@ Next.js: http://localhost:3001
 - ❌ GitHubリポジトリへのプッシュ
 - ❌ Vercelへのデプロイ
 - ❌ 本番環境CORS設定
-- ❌ QRコード生成
 
 ### 最新実装（2025年11月25日）
 - ✅ @portabletext/reactパッケージのインストール
@@ -208,12 +207,6 @@ git push -u origin main
 5. VercelのURL（例: `https://monogatari-ec.vercel.app`）を追加
 6. 「Allow credentials」にチェック
 7. 保存
-
-#### ステップ5: QRコード生成
-1. オンラインツールを使用: https://www.qr-code-generator.com/
-2. VercelのURLを入力
-3. QRコードをダウンロード
-4. スマホでスキャンして動作確認
 
 ### 🟢 優先度3: コンテンツの充実（オプション）
 
@@ -480,11 +473,6 @@ git push -u origin main
 ### ステップ3: Sanity CORS設定（本番URL）
 デプロイ後、VercelのURLを取得（例: `https://monogatari-ec.vercel.app`）
 Sanity管理画面で本番URLをCORS Originに追加
-
-### ステップ4: QRコード生成
-デプロイ完了後、VercelのURLからQRコードを生成
-- オンラインツール: https://www.qr-code-generator.com/
-- または、QRコードコンポーネントを追加
 
 ---
 

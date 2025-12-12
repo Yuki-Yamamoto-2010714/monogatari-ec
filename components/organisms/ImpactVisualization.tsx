@@ -84,7 +84,7 @@ export function ImpactVisualization() {
                                 {/* Arrow (Mobile) */}
                                 {index < steps.length - 1 && (
                                     <div className="md:hidden flex justify-center py-4">
-                                        <svg className="w-6 h-6 text-stone-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg className="w-6 h-6 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                                         </svg>
                                     </div>
