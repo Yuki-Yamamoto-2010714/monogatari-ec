@@ -6,7 +6,7 @@ import Link from 'next/link'
 // Helper to get placeholder based on craft type
 const getPlaceholderImage = (artisan: any) => {
   // Return specific image for Hanako Sato or based on heuristics if needed
-  if (artisan.name?.includes('花子') || artisan.name?.includes('Hanako')) {
+  if (artisan.name?.includes('花子') || artisan.name?.includes('Hanako') || artisan.name?.includes('絹子') || artisan.name?.includes('Kinuko')) {
     return '/images/placeholder_female_artisan.png'
   }
   // Default male/general artisan

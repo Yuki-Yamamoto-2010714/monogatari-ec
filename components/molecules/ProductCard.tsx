@@ -16,6 +16,7 @@ const getPlaceholderImage = (product: Product) => {
 
   if (title.includes('欄間') || slug.includes('ranma')) return '/images/placeholder_ranma.png'
   if (title.includes('便箋') || title.includes('和紙') || slug.includes('washi')) return '/images/placeholder_washi.png'
+  if (title.includes('絹') || title.includes('ストール') || slug.includes('silk') || slug.includes('stole')) return '/images/placeholder_silk.png'
   return '/images/placeholder_plate.png'
 }
 
