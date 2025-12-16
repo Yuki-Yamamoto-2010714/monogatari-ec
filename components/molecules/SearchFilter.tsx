@@ -11,38 +11,28 @@ export function SearchFilter() {
     const [category, setCategory] = useState(searchParams.get('category') || 'all')
     const [priceRange, setPriceRange] = useState(searchParams.get('price') || 'all')
 
-    const updateParams = useCallback((updates: Record<string, string | null>) => {
-        const params = new URLSearchParams(searchParams.toString())
+    const executeSearch = () => {
+        const params = new URLSearchParams()
 
-        Object.entries(updates).forEach(([key, value]) => {
-            if (value && value !== 'all') {
-                params.set(key, value)
-            } else {
-                params.delete(key)
-            }
-        })
+        if (search) params.set('q', search)
+        if (category && category !== 'all') params.set('category', category)
+        if (priceRange && priceRange !== 'all') params.set('price', priceRange)
 
         router.push(`/products?${params.toString()}`)
-    }, [router, searchParams])
-
-    const handleSearchClick = () => {
-        updateParams({ q: search })
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            handleSearchClick()
+            executeSearch()
         }
     }
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCategory(e.target.value)
-        updateParams({ category: e.target.value })
     }
 
     const handlePriceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setPriceRange(e.target.value)
-        updateParams({ price: e.target.value })
     }
 
     return (
@@ -59,10 +49,10 @@ export function SearchFilter() {
                             onChange={(e) => setSearch(e.target.value)}
                             onKeyDown={handleKeyDown}
                             placeholder="商品名など..."
-                            className="w-full px-3 py-2 border border-stone-300 rounded-sm focus:outline-none focus:border-stone-500 bg-stone-50 text-sm placeholder:text-stone-500"
+                            className="w-full px-3 py-2 border border-stone-300 rounded-sm focus:outline-none focus:border-stone-500 bg-stone-50 text-sm placeholder:text-stone-500 text-stone-900"
                         />
                         <button
-                            onClick={handleSearchClick}
+                            onClick={executeSearch}
                             className="px-4 py-2 bg-stone-800 text-white text-sm font-bold rounded-sm hover:bg-stone-700 transition-colors"
                         >
                             検索
@@ -79,11 +69,10 @@ export function SearchFilter() {
                         className="w-full px-3 py-2 border border-stone-300 rounded-sm focus:outline-none focus:border-stone-500 bg-stone-50 text-sm text-stone-800"
                     >
                         <option value="all">すべてのカテゴリ</option>
-                        <option value="home-decor">インテリア</option>
-                        <option value="kitchen">食器・キッチン</option>
-                        <option value="stationery">文房具</option>
-                        <option value="textiles">織物・布製品</option>
-                        <option value="accessories">アクセサリー</option>
+                        <option value="sculpture">彫刻</option>
+                        <option value="washi-products">和紙製品</option>
+                        <option value="textiles">織物</option>
+                        <option value="other">その他</option>
                     </select>
                 </div>
 

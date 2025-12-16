@@ -34,8 +34,8 @@ export default async function ProductsPage({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-12">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold font-serif mb-4 text-stone-900">商品一覧</h1>
-        <p className="text-lg text-stone-600">
+        <h1 className="text-4xl font-bold font-serif mb-4 text-stone-900 dark:text-stone-100">商品一覧</h1>
+        <p className="text-lg text-stone-700 dark:text-stone-200">
           南砺市の職人が丹精込めて作り上げた伝統工芸品をご覧ください
         </p>
       </div>

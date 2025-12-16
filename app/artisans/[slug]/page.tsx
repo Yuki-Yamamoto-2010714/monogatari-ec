@@ -20,7 +20,7 @@ export default async function ArtisanPage({
 
   // Placeholder logic
   const getPlaceholderImage = (art: any) => {
-    if (art.name?.includes('花子') || art.name?.includes('Hanako')) {
+    if (art.name?.includes('花子') || art.name?.includes('Hanako') || art.name?.includes('絹子') || art.name?.includes('Kinuko')) {
       return '/images/placeholder_female_artisan.png'
     }
     return '/images/placeholder_artisan.png'

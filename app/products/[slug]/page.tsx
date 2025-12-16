@@ -121,7 +121,7 @@ export default async function ProductPage({
                     {product.description}
                   </div>
                 ) : (
-                  <p className="text-stone-400 italic">No description available.</p>
+                  <p className="text-stone-600 italic">No description available.</p>
                 )}
               </div>
 

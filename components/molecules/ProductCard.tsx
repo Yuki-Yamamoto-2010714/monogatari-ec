@@ -47,6 +47,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }
 
       <div className="p-4">
         <Link href={`/products/${product.slug.current}`}>
+          {product.category && (
+            <p className="text-xs text-stone-500 uppercase tracking-widest mb-1">
+              {{
+                'sculpture': '彫刻',
+                'washi-products': '和紙製品',
+                'textiles': '織物',
+                'other': 'その他'
+              }[product.category] || product.category}
+            </p>
+          )}
           <h3 className="font-semibold text-lg mb-2 line-clamp-2 text-stone-900 hover:text-stone-600 transition-colors">
             {product.title}
           </h3>

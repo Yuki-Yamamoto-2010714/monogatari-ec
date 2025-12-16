@@ -70,7 +70,7 @@ export default async function StoriesPage() {
                         story.artisan?.craftType === 'gokayama-washi' ? '五箇山和紙' : 'CRAFTSMANSHIP'}
                     </span>
                     {story.publishedAt && (
-                      <time className="text-xs text-stone-400 font-medium">
+                      <time className="text-xs text-stone-600 font-medium">
                         {new Date(story.publishedAt).toLocaleDateString('ja-JP')}
                       </time>
                     )}
@@ -92,7 +92,7 @@ export default async function StoriesPage() {
                         職人: {story.artisan.name}
                       </span>
                     )}
-                    <span className="ml-auto text-stone-400 group-hover:text-stone-900 transition-colors">
+                    <span className="ml-auto text-stone-500 group-hover:text-stone-900 transition-colors">
                       Read More →
                     </span>
                   </div>

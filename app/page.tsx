@@ -66,7 +66,7 @@ export default async function Home() {
       {/* Footer CTA */}
       <section className="py-32 px-4 bg-gray-900 text-white text-center">
         <div className="max-w-4xl mx-auto">
-          <p className="text-lg text-gray-400 mb-6 tracking-widest">Nanto City, Toyama</p>
+          <p className="text-lg text-gray-600 mb-6 tracking-widest">Nanto City, Toyama</p>
           <h2 className="text-3xl md:text-5xl font-bold mb-12 font-serif leading-tight">
             伝統を、<br />未来へつなぐ。
           </h2>

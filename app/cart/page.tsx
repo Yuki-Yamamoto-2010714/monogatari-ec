@@ -110,7 +110,7 @@ export default function CartPage() {
 
                       <button
                         onClick={() => removeItem(item.productId)}
-                        className="text-stone-400 hover:text-red-700 text-sm font-medium transition-colors"
+                        className="text-stone-600 hover:text-red-700 text-sm font-medium transition-colors"
                       >
                         削除する
                       </button>
@@ -142,7 +142,7 @@ export default function CartPage() {
                 </div>
                 <div className="flex justify-between text-stone-600">
                   <span>配送料</span>
-                  <span className="text-stone-400">計算中</span>
+                  <span className="text-stone-600">計算中</span>
                 </div>
               </div>
 
@@ -162,7 +162,7 @@ export default function CartPage() {
               </Link>
             </div>
 
-            <p className="mt-6 text-xs text-stone-400 leading-relaxed text-center">
+            <p className="mt-6 text-xs text-stone-500 leading-relaxed text-center">
               ※ 本サイトはデモサイトです。<br />実際の決済は行われません。
             </p>
           </div>
